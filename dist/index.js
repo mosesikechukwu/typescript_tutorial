@@ -18,6 +18,7 @@ form?.addEventListener("submit", (e) => {
   addListItem(newTask);
   tasks.push(newTask);
   saveTasks();
+  input.value = "";
 });
 function addListItem(task) {
   const item = document.createElement("li");
@@ -29,7 +30,9 @@ function addListItem(task) {
   });
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
-  label.append(checkbox, task.title);
+  const span = document.createElement("span");
+  span.textContent = task.title;
+  label.append(checkbox, span);
   item.append(label);
   list?.append(item);
 }
